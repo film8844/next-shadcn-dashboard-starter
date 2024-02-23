@@ -15,13 +15,21 @@ export const authOptions: NextAuthOptions = {
           type: "email",
           placeholder: "example@gmail.com",
         },
+        password: {
+          label: "password",
+          type: "password",
+          placeholder: "",
+        },
+        
       },
       async authorize(credentials, req) {
-        const user = { id: "1", name: "John", email: credentials?.email };
-        if (user) {
+        const user = { id: "1", name: "Admin", email: credentials?.email };
+        
+        if (credentials?.email == 'admin@boi.fund' && credentials?.password == '1234') {
           // Any object returned will be saved in `user` property of the JWT
           return user;
         } else {
+  
           // If you return null then an error will be displayed advising the user to check their details.
           return null;
 
